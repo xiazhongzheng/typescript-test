@@ -13,3 +13,12 @@ type KebabCase<T, S extends string = ''> = T extends `${infer L}${infer R}` ?
 
 type a1 = KebabCase<'HandleOpenFlag'>           // handle-open-flag
 type a2 = KebabCase<'OpenFlag'>                 // open-flag
+
+
+type GetKebabCase<T> = T extends `on${infer R}` ? KebabCase<R> : KebabCase<T>
+type a3 = GetKebabCase<'onHandleOpenFlag'>           // handle-open-flag
+type a4 = GetKebabCase<'onOpenFlag'>                 // open-flag
+
+export {
+  GetKebabCase
+}

@@ -11,3 +11,12 @@ type CamelCase<T, S extends string = '', C extends string = ''> = T extends `${i
 
 type a1 = CamelCase<'handle-open-flag'>         // HandleOpenFlag
 type a2 = CamelCase<'open-flag'>                // OpenFlag
+
+type GetListenName<T, S extends string = 'on'> = CamelCase<T, S>
+
+type a3 = GetListenName<'handle-open-flag'>         // onHandleOpenFlag
+type a4 = GetListenName<'open-flag'>                // onOpenFlag
+
+export {
+  GetListenName
+}
