@@ -36,27 +36,32 @@ const Component = createComponent({
     'preview-item': (data: { item: any, index: number }) => true,
     'close-item': (data: { item: any, index: number }) => true,
 })
-// console.log(
-//     <Component
-//         // onHandleOpen 的类型为 (flag: boolean) => void
-//         onHandleOpen={val => console.log(val.valueOf())}
-//         // onPreviewItem 的类型为 (data: { item: any, index: number }) => void
-//         onPreviewItem={val => {
-//             const {item, index} = val
-//             const a: number = item
-//             console.log(a, index.toFixed(2))
-//         }}
-//         // 所有的监听事件属性都是可选属性，可以不传处理函数句柄
-//         // onCloseItem={val => [{val}]}
-//     />
-// )
+console.log(
+    <Component
+        // onHandleOpen 的类型为 (flag: boolean) => void
+        onHandleOpen={val => console.log(val.valueOf())}
+        // onPreviewItem 的类型为 (data: { item: any, index: number }) => void
+        onPreviewItem={val => {
+            const {item, index} = val
+            const a: number = item
+            console.log(a, index.toFixed(2))
+        }}
+        // 所有的监听事件属性都是可选属性，可以不传处理函数句柄
+        onCloseItem={val => [{val}]}
+        // onCloseItem1={val => [{val}]}
+    />,
+    // 代码提示
+    // <Component 
+    //     on
+    // />
+)
 
-// // 提示，定义组件的props类型方式为 { (props: Partial<Convert<Emits>>): any }
-// // 比如 Comp 可以接收属性 {name:string, age:number, flag:boolean, id?:string}，其中id为可选属性，那么可以这样写
+// 提示，定义组件的props类型方式为 { (props: Partial<Convert<Emits>>): any }
+// 比如 Comp 可以接收属性 {name:string, age:number, flag:boolean, id?:string}，其中id为可选属性，那么可以这样写
 
-// const Comp: { (props: { name: string, age: number, flag: boolean, id?: string }): any } = Function as any
+const Comp: { (props: { name: string, age: number, flag: boolean, id?: string }): any } = Function as any
 
-// console.log(<Comp name="" age={1} flag/>)           // 正确
-// console.log(<Comp name="" age={1} flag id="111"/>)  // 正确
-// // console.log(<Comp name={1} age={1} flag/>)          // 错误，name为字符串类型
-// // console.log(<Comp age={1} flag/>)                   // 错误，缺少必须属性name:string
+console.log(<Comp name="" age={1} flag/>)           // 正确
+console.log(<Comp name="" age={1} flag id="111"/>)  // 正确
+// console.log(<Comp name={1} age={1} flag/>)          // 错误，name为字符串类型
+// console.log(<Comp age={1} flag/>)                   // 错误，缺少必须属性name:string
