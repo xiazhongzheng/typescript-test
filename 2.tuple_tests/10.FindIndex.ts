@@ -29,3 +29,5 @@ type G = FindIndex<A, 343> // never
 // type A7 = Equals<any, true> // false
 // type A8 = Equals<any, {}> // false
 // type A9 = Equals<any, never> // false
+
+export {FindIndex}
