@@ -2,7 +2,7 @@ export default {}
 // 获取对象类型中的可选属性的联合类型
 // Omit<T, K> 从T里面排除K
 // 当去掉K之后，任然可以分配给T，说明K是可选的
-type OptionalKeys<T, K = keyof T> = K extends keyof T ? (
+export type OptionalKeys<T, K = keyof T> = K extends keyof T ? (
   Omit<T, K> extends T ? K : never
 ) : never
 
