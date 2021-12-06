@@ -2,6 +2,7 @@ export default {}
 // 获取对象类型中的可选属性的联合类型
 // Omit<T, K> 从T里面排除K
 // 当去掉K之后，任然可以分配给T，说明K是可选的
+// 要返回联合类型的，就用extends。 要返回对象的，就用{}包裹，属性用[k in keyof T]的方式循环，值用extends的方式判断
 export type OptionalKeys<T, K = keyof T> = K extends keyof T ? (
   Omit<T, K> extends T ? K : never
 ) : never
