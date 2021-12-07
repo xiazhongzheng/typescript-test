@@ -13,6 +13,8 @@ export default {}
 // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-8.html#distributive-conditional-types
 
 // 实现类型 UnionToIntersection，用来将联合类型转换为交叉类型
+
+// 猜测。。的解析。。
 // 参逆父，返协子 
 // 协变对象，多赋少（子给父），逆变参数，少赋多（父给子）。函数参数双向的，只不过是不安全
 // https://jkchao.github.io/typescript-book-chinese/tips/covarianceAndContravariance.html#%E5%8D%8F%E5%8F%98%E4%B8%8E%E9%80%86%E5%8F%98
