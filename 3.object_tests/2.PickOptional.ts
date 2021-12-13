@@ -5,10 +5,12 @@ import {OptionalKeys} from './1.OptionalKeys'
 // type PickOptional<T> = Omit<T, A<T>>
 
 
-type PickOptional<T> = {
-  [k in OptionalKeys<T>]?: k extends keyof T ? T[k] : never
-  // [k in OptionalKeys<T>]?: T[k]
-}
+// type PickOptional<T> = {
+//   [k in OptionalKeys<T>]?: k extends keyof T ? T[k] : never
+//   // [k in OptionalKeys<T>]?: T[k]
+// }
+
+type PickOptional<T> = Pick<T, OptionalKeys<T>>
 
 type a1 = PickOptional<{ foo: number | undefined, bar?: string, flag: boolean }>        // {bar?:string|undefined}
 type a2 = PickOptional<{ foo: number, bar?: string }>                                   // {bar?:string}

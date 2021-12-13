@@ -1,13 +1,15 @@
 export default {}
 // 合并两个对象类型T以及K，如果属性重复，则以K中属性类型为准；
 
-type Merge<T, K> = {
-  [k in (keyof T | keyof K)]: k extends keyof T ? (
-    k extends keyof K ? K[k] : T[k]
-  ) : (
-    k extends keyof K ? K[k] : never
-  )
-}
+// type Merge<T, K> = {
+//   [k in (keyof T | keyof K)]: k extends keyof T ? (
+//     k extends keyof K ? K[k] : T[k]
+//   ) : (
+//     k extends keyof K ? K[k] : never
+//   )
+// }
+
+type Merge<T, K> = Pick<T, Exclude<keyof T, keyof K>> & K
 
 type obj1 = {
   el: string,
