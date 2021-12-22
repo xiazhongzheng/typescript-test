@@ -1,5 +1,7 @@
 export default {}
 // 将联合类型转换为交叉类型
+
+// 错误
 // type UnionToIntersection<T, TT = T, R = never> = T extends any ? (
 
 //   R extends never ? UnionToIntersection<Exclude<TT, T>, Exclude<TT, T>, T> : UnionToIntersection<Exclude<TT, T>, Exclude<TT, T>, R & T>

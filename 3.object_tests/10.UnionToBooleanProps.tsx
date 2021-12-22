@@ -7,13 +7,18 @@ export default {}
 //   [k in T]?: [k] extends [T] ? true | false : never
 // }
 
-// 答案
-type UnionToBooleanProps<T extends string, TT extends string = T> =
-    T extends any ? // 分配率。。。。经过T extends any之后，T是单个info、success、warning、error
+type UnionToBooleanProps1<T extends string, TT extends string = T> =
+    T extends TT ? // 分配率。。。。经过T extends any之后，T是单个info、success、warning、error
     // 而TT还是联合类型，所以Exclude<TT, T>，就是除了T之外的其他三个类型，是可选的
     // [k in T] 中，T是必选的。。。
         { [k in Exclude<TT, T>]?: void } & { [k in T]: boolean; }
         : never
+
+// 答案
+type UnionToBooleanProps<T extends string, TT extends string = T> =
+    T extends TT ? { [k in Exclude<TT, T>]?: false } & { [k in T]: true; }
+        : never
+    
 
 type MessageStringType = "info" | "success" | "warning" | "error";
 type OneMessageTypes = UnionToBooleanProps<MessageStringType>
@@ -23,7 +28,8 @@ function Component(props: Props) {
 }
 
 const a = <Component id="abc" info={true}/>           //correct
-const b = <Component id="abc" success={false}/>        //correct
+const b = <Component id="abc" success/>        //correct
+// const b2 = <Component id="abc" success={false}/>        //wrong
 // const b1 = <Component id="abc" success={undefined}/>        //wrong
 // const c = <Component id="abc"/>                //wrong
 // const d = <Component id="abc" info success/>   //wrong

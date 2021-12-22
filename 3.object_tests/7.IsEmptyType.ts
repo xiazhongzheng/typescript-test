@@ -2,9 +2,9 @@ export default {}
 // 判断是否为没有属性的对象类型{}
 // []避免never不进入extends
 // 暂时测试没问题
-type IsEmptyType<T> = [T] extends [Record<any, undefined>] ? (keyof T extends never ? true : false) : false
+// type IsEmptyType<T> = [T] extends [Record<any, undefined>] ? (keyof T extends never ? true : false) : false
 
-// 答案
+// 答案1
 // 原始数据类型不可以赋值给另一个原始数据类型 number不可以赋值给object
 // 包装数据类型可以赋值给原始数据类型，比如 Number可以赋值给object
 // type IsEmptyType<T> =
@@ -14,6 +14,10 @@ type IsEmptyType<T> = [T] extends [Record<any, undefined>] ? (keyof T extends ne
 //       : false
 //     : false
 
+// 答案2
+type IsEmptyType<T> = [keyof T] extends [never] ? (
+  [unknown] extends [T] ? false : (number extends T ? true : false)
+) : false
 
 type A = IsEmptyType<string> // false
 type B = IsEmptyType<{ a: 3 }> // false

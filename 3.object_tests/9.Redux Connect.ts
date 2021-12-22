@@ -25,6 +25,7 @@ type FunKey<M, k = keyof M> =  k extends keyof M ? (
 ) : never
 type Funkey1 = FunKey<Module>
 
+// 错误
 // type Connect<M> = {
 //   [k in FunKey<M>]: k extends keyof M ? (
 //     M[k] extends (input: Promise<M[k]>) => Promise<M[k]> ? 

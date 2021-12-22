@@ -1,7 +1,9 @@
 export default {}
 // 判断是否为any类型
+// 错误
 // type IsAny<T> = [T] extends [Record<any, unknown>] ? ([T] extends [never] ? false : (true)) : false
 
+// 答案
 // 使用 [T] 避免传入的是联合类型导致类型分布
 // unknown 只能赋值给 any或者unknown
 // any可以赋值给string，但是unknown不可以赋值给string
